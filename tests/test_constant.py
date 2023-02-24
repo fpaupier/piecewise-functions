@@ -31,3 +31,13 @@ class TestConstant:
     def test_boundary_minus_inf(self):
         evaluation = self.constant.evaluate(-math.inf)
         assert evaluation == 1
+
+    def test_min(self):
+        min_val, arg_min = self.constant.minimum()
+        assert min_val == 1
+        assert -math.inf <= arg_min <= math.inf
+
+    def test_max(self):
+        max_val, arg_max = self.constant.maximum()
+        assert max_val == 1
+        assert -math.inf <= arg_max <= math.inf

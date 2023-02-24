@@ -40,3 +40,13 @@ class TestHeaviside:
         """Expect to work for -infinity since we do a comparison x >= self.breakpoints[i]"""
         evaluation = self.heaviside.evaluate(-math.inf)
         assert evaluation == 0
+
+    def test_min(self):
+        min_val, arg_min = self.heaviside.minimum()
+        assert min_val == 0
+        assert -math.inf <= arg_min <= 0
+
+    def test_max(self):
+        max_val, arg_max = self.heaviside.maximum()
+        assert max_val == 1
+        assert 0 <= arg_max <= math.inf

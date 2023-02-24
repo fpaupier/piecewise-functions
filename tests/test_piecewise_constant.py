@@ -43,3 +43,13 @@ class TestPiecewiseConstant:
     def test_boundary_minus_inf(self):
         evaluation = self.piecewise_constant.evaluate(-math.inf)
         assert evaluation == 0
+
+    def test_min(self):
+        min_val, arg_min = self.piecewise_constant.minimum()
+        assert min_val == -1
+        assert 1 <= arg_min <= math.inf
+
+    def test_max(self):
+        max_val, arg_max = self.piecewise_constant.maximum()
+        assert max_val == 1
+        assert -1 <= arg_max <= 1
