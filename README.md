@@ -22,6 +22,19 @@ pip install -r requirements.txt
 
 With your virtual environment setup, from the project root directory run `pytest`
 
+## Building & pushing the library
+```bash
+# 1. Use hatch to package the library
+./build_lib.sh
+
+# 2. Push to your favorite PyPy repo with:
+#   (see TestPyPi doc https://packaging.python.org/en/latest/tutorials/packaging-projects/) 
+python3 -m twine upload --repository testpypi dist/*
+
+# 3. In your client project, install the desired version by running
+pip install -i https://test.pypi.org/simple/ --no-deps piecewise-functions-fp==0.0.3
+```
+
 ## Bibliography
 
 - Piecewise constant function see the [Wolfram Mathworld post](https://mathworld.wolfram.com/PiecewiseConstantFunction.html) on the subject
