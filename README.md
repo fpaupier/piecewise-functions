@@ -34,7 +34,7 @@ With your virtual environment setup, from the project root directory run `pytest
 python3 -m twine upload --repository testpypi dist/*
 
 # 3. In your client project, install the desired version by running
-pip install -i https://test.pypi.org/simple/ --no-deps piecewise-functions-fp==0.0.5
+pip install -i https://test.pypi.org/simple/ --no-deps piecewise-functions-fp==0.0.6
 ```
 
 ## Bibliography
