@@ -2,6 +2,8 @@
 
 A library exposing a class for working with piecewise constant function.
 
+![Pytest](https://github.com/fpaupier/piecewise-functions/actions/workflows/python-pytest.yml/badge.svg)
+
 ## Contributing
 1. Create a virtual environment and activate it
 ```shell
