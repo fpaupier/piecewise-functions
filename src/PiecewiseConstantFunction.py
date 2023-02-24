@@ -69,7 +69,17 @@ class PiecewiseConstantFunction:
             )
 
         # Ensure breakpoints and values dimensions are coherent
-        correct_dimensions: bool = len(breakpoints) == len(values) + 1
+        n_breakpoints: int = len(breakpoints)
+        n_values: int = len(values)
+        if n_breakpoints < 2:
+            raise ValueError(
+                "PiecewiseConstantFunction expects to have at least 2 breakpoints"
+            )
+        if n_values < 1:
+            raise ValueError(
+                "PiecewiseConstantFunction expects to have at least 1 value"
+            )
+        correct_dimensions: bool = n_breakpoints == n_values + 1
         if not correct_dimensions:
             raise ValueError(
                 "PiecewiseConstantFunction expects to have n breakpoints and n-1 values"
