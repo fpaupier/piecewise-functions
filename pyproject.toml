@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "piecewise_functions_fp"
+version = "0.0.1"
+authors = [
+  { name="François Paupier", email="francois.paupier@orange.fr" },
+]
+description = "A small example to manipulate piecewise fucntions"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/fpaupier/piecewise-functions"
+"Bug Tracker" = "https://github.com/fpaupier/piecewise-functions/issues"
