@@ -6,7 +6,7 @@ A library exposing a class for working with piecewise constant function.
 1. Create a virtual environment and activate it
 ```shell
 python3 -m venv .venv
-source .venv/bin/acticate
+source .venv/bin/activate
 ```
 
 2.Install the dependencies
