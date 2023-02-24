@@ -1,10 +1,9 @@
 from typing import List, Tuple, Any
 
-import numpy as np
-import matplotlib.pyplot as plt
+from PiecewiseFunctions.PiecewiseFunction import PiecewiseFunction
 
 
-class PiecewiseLinearFunction:
+class PiecewiseLinearFunction(PiecewiseFunction):
     """
     Represents a Piecewise Linear Function
 
@@ -134,7 +133,9 @@ class PiecewiseLinearFunction:
             x (float): value to evaluate the function on
 
         Returns:
-            float the value of the evaluatioN
+            float the value of the evaluation
+
+        Raises: ValueError if x is out of bound
 
         """
         for i in range(len(self.breakpoints) - 1):
@@ -179,31 +180,3 @@ class PiecewiseLinearFunction:
                 max_value = value
                 argmax = self.breakpoints[i]
         return max_value, argmax
-
-    def draw(
-        self, x_min: float = -10.0, x_max: float = 10.0, num_points: int = 1000
-    ) -> None:
-        """
-        Generate a plot of the function over the input range.
-
-        Args:
-            x_min: lower bound
-            x_max: higher bound
-            num_points: number of points to sample
-
-        Returns: None - print the function
-
-        Raises: `ValueError` if `x_min` and `x_max` are out of the range or at their boundaries
-        """
-        # Generate a range of x values
-        x_values = np.linspace(x_min, x_max, num_points)
-
-        # Evaluate the function at each x value
-        y_values = [self.evaluate(x) for x in x_values]
-
-        # Plot the function
-        plt.plot(x_values, y_values)
-        plt.xlabel("x")
-        plt.ylabel("f(x)")
-        plt.title("Piecewise Constant Function")
-        plt.show()
