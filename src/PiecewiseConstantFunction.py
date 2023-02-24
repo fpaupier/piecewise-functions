@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List, Tuple, Any
 
 
 class PiecewiseConstantFunction:
@@ -14,11 +14,67 @@ class PiecewiseConstantFunction:
             if the breakpoints are [0, 1, 2, 3] and the values are [1, 2, 1], then the function
             is equal to 1 on the interval [0, 1), equal to 2 on the interval [1, 2), and equal to 1
             on the interval [2, 3).
+
+        Warnings: this implementation assumes that the breakpoints are given in increasing order, and that there are
+        no repeated breakpoints. If these assumptions do not hold, the behavior of the class is not guaranteed to be
+        correct. It is up to the user to ensure that the input is valid.
+
+        Warnings: this implementation does not handle the case where the function is not defined at a breakpoint
+        (i.e., where the function has a jump discontinuity). If such cases need to be handled,
+        the implementation will need to be modified accordingly.
         """
 
-        assert len(breakpoints) == len(values) + 1
+        # Perform sanity checks over input
+        self.sanity_check(breakpoints, values)
         self.breakpoints = breakpoints
         self.values = values
+
+    @staticmethod
+    def sanity_check(breakpoints: Any, values: Any) -> None:
+        """
+        Raises: ValueError if breakpoints or values are not of the expected type for PiecewiseConstantFunction
+        Args:
+            breakpoints: (expected list to boundaries to test)
+            values: (expected list of numbers to test)
+
+        Returns: None
+
+        """
+        # Ensure types are valid
+        if type(breakpoints) != list:
+            raise ValueError("PiecewiseConstantFunction expects list for breakpoints")
+        if type(values) != list:
+            raise ValueError("PiecewiseConstantFunction expects list for values")
+
+        # Check that values are numbers
+        for val in values:
+            if type(val) not in (float, int):
+                raise ValueError(
+                    "PiecewiseConstantFunction expects value to be integer or floating point number"
+                )
+        # Check that boundaries are numbers
+        for border in breakpoints:
+            if type(border) not in (float, int):
+                raise ValueError(
+                    "PiecewiseConstantFunction expects breakpoint to be integer or floating point number"
+                )
+
+        # Ensure breakpoints are sorted
+        sorted_breakpoints: bool = all(
+            breakpoints[i] <= breakpoints[i + 1] for i in range(len(breakpoints) - 1)
+        )
+        if not sorted_breakpoints:
+            raise ValueError(
+                "PiecewiseConstantFunction expects breakpoints to be passed in increasing order"
+            )
+
+        # Ensure breakpoints and values dimensions are coherent
+        correct_dimensions: bool = len(breakpoints) == len(values) + 1
+        if not correct_dimensions:
+            raise ValueError(
+                "PiecewiseConstantFunction expects breakpoints to be passed in increasing order"
+            )
+        return
 
     def evaluate(self, x: float) -> float:
         """
@@ -52,13 +108,6 @@ class PiecewiseConstantFunction:
 
         Notes: The maximum method works analogously.
 
-        Warnings: the implementation assumes that the breakpoints are given in increasing order, and that there are
-        no repeated breakpoints. If these assumptions do not hold, the behavior of the class is not guaranteed to be
-        correct. It is up to the user to ensure that the input is valid.
-
-        Warnings: this implementation does not handle the case where the function is not defined at a breakpoint
-        (i.e., where the function has a jump discontinuity). If such cases need to be handled,
-        the implementation will need to be modified accordingly.
         """
         min_val = min(self.values)
         argmin = self.breakpoints[self.values.index(min_val)]
