@@ -72,7 +72,7 @@ class PiecewiseConstantFunction:
         correct_dimensions: bool = len(breakpoints) == len(values) + 1
         if not correct_dimensions:
             raise ValueError(
-                "PiecewiseConstantFunction expects breakpoints to be passed in increasing order"
+                "PiecewiseConstantFunction expects to have n breakpoints and n-1 values"
             )
         return
 
