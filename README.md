@@ -37,3 +37,7 @@ pip install -r requirements.txt
 
 With your virtual environment setup, from the project root directory run `pytest`
 
+## Bibliography
+
+- Piecewise constant function see the [Wolfram Mathworld post](https://mathworld.wolfram.com/PiecewiseConstantFunction.html) on the subject
+- Heaviside Step function introduction at [this post](https://mathworld.wolfram.com/HeavisideStepFunction.html)
