@@ -41,7 +41,7 @@ class PiecewiseConstantFunction:
         if x < self.breakpoints[0] or x >= self.breakpoints[-1]:
             raise ValueError(f"Input value {x} is out of bounds.")
         for i in range(len(self.breakpoints) - 1):
-            if x >= self.breakpoints[i] and x < self.breakpoints[i + 1]:
+            if self.breakpoints[i] <= x < self.breakpoints[i + 1]:
                 return self.values[i]
         raise ValueError(f"No interval found for input value {x}.")
 
