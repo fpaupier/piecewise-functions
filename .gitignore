@@ -5,7 +5,7 @@ __pycache__/
 
 # Ignore IDE files
 .idea/
-
+.DS_Store
 # C extensions
 *.so
 
