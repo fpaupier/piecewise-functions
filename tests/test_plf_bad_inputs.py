@@ -11,7 +11,7 @@ class TestBadInputs:
         piecewise_linear_fn = PiecewiseLinearFunction(breakpoints, slopes, intercepts)
         min_val, min_arg = piecewise_linear_fn.minimum()
         assert min_val == -100.02 * 4 - 2
-        assert min_arg == math.pi
+        assert min_arg == 4
 
     def test_invalid_breakpoints_type(self):
         breakpoints = []

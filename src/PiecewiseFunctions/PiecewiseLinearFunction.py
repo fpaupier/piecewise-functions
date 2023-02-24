@@ -152,17 +152,21 @@ class PiecewiseLinearFunction(PiecewiseFunction):
         as well as the corresponding argument where this minimum value is attained.
         """
         min_value = float("inf")
+        argmin_candidate = None
         argmin = None
         for i in range(len(self.breakpoints) - 1):
             if self.slopes[i] == 0:
                 value = self.intercepts[i]
+                argmin_candidate = self.breakpoints[i]
             elif self.slopes[i] < 0:
                 value = self.slopes[i] * self.breakpoints[i + 1] + self.intercepts[i]
+                argmin_candidate = self.breakpoints[i + 1]
             else:
                 value = self.slopes[i] * self.breakpoints[i] + self.intercepts[i]
+                argmin_candidate = self.breakpoints[i]
             if value < min_value:
                 min_value = value
-                argmin = self.breakpoints[i]
+                argmin = argmin_candidate
         return min_value, argmin
 
     def maximum(self) -> Tuple[float, float]:
@@ -172,14 +176,18 @@ class PiecewiseLinearFunction(PiecewiseFunction):
         """
         max_value = float("-inf")
         argmax = None
+        argmax_candidate = None
         for i in range(len(self.breakpoints) - 1):
             if self.slopes[i] == 0:
                 value = self.intercepts[i]
+                argmax_candidate = self.breakpoints[i]
             elif self.slopes[i] > 0:
                 value = self.slopes[i] * self.breakpoints[i + 1] + self.intercepts[i]
+                argmax_candidate = self.breakpoints[i + 1]
             else:
                 value = self.slopes[i] * self.breakpoints[i] + self.intercepts[i]
+                argmax_candidate = self.breakpoints[i]
             if value > max_value:
                 max_value = value
-                argmax = self.breakpoints[i]
+                argmax = argmax_candidate
         return max_value, argmax
