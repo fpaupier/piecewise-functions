@@ -4,6 +4,16 @@ import matplotlib.pyplot as plt
 
 
 class PiecewiseConstantFunction:
+    """
+    Represents a Piecewise Constant Function
+
+    A piecewise constant function can be modeled as a function whose value is given by the equation
+
+        y = b
+
+    over each of its domain of definitions.
+    """
+
     def __init__(self, breakpoints: List[float], values: List[float]):
         """
         The PiecewiseConstantFunction class takes two arguments in the constructor: breakpoints and values.
