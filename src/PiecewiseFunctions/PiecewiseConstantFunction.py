@@ -9,7 +9,7 @@ class PiecewiseConstantFunction:
 
     A piecewise constant function can be modeled as a function whose value is given by the equation
 
-        y = b
+        `y = b`
 
     over each of its domain of definitions.
     """
@@ -65,7 +65,13 @@ class PiecewiseConstantFunction:
                     "PiecewiseConstantFunction expects value to be integer or floating point number"
                 )
         # Check that boundaries are numbers
+        seen = set()
         for border in breakpoints:
+            if border in seen:
+                raise ValueError(
+                    "PiecewiseConstantFunction expects breakpoints to be unique"
+                )
+            seen.add(border)
             if type(border) not in (float, int):
                 raise ValueError(
                     "PiecewiseConstantFunction expects breakpoint to be integer or floating point number"

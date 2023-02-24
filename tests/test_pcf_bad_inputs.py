@@ -18,6 +18,12 @@ class TestBadInputs:
         with pytest.raises(ValueError):
             PiecewiseConstantFunction(breakpoints, values)
 
+    def test_duplicate_breakpoints_type(self):
+        breakpoints = [10, 10]
+        values = [1]
+        with pytest.raises(ValueError):
+            PiecewiseConstantFunction(breakpoints, values)
+
     def test_unsorted_breakpoints_type(self):
         breakpoints = [-10, 1, 10, 5]
         values = [0, 3, 4]
