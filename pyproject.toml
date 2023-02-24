@@ -10,7 +10,7 @@ directory = "dist"
 
 [project]
 name = "piecewise_functions_fp"
-version = "0.0.3"
+version = "0.0.4"
 authors = [
   { name="François Paupier", email="francois.paupier@orange.fr" },
 ]
