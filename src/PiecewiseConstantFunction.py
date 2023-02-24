@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 
 class PiecewiseConstantFunction:
@@ -12,14 +12,15 @@ class PiecewiseConstantFunction:
 
         Examples:
             if the breakpoints are [0, 1, 2, 3] and the values are [1, 2, 1], then the function
-            is equal to 1 on the interval [0, 1), equal to 2 on the interval [1, 2), and equal to 1 on the interval [2, 3).
+            is equal to 1 on the interval [0, 1), equal to 2 on the interval [1, 2), and equal to 1
+            on the interval [2, 3).
         """
 
         assert len(breakpoints) == len(values) + 1
         self.breakpoints = breakpoints
         self.values = values
 
-    def evaluate(self, x: float):
+    def evaluate(self, x: float) -> float:
         """
         The evaluate method takes a single argument x, and returns the value of the function at that point.
 
@@ -44,7 +45,7 @@ class PiecewiseConstantFunction:
                 return self.values[i]
         raise ValueError(f"No interval found for input value {x}.")
 
-    def minimum(self):
+    def minimum(self) -> Tuple[float, float]:
         """
         Returns: ((min value, arg min)) the minimum value of the function and the corresponding argmin, i.e., the left endpoint
         of the interval where the minimum is achieved.
@@ -63,7 +64,7 @@ class PiecewiseConstantFunction:
         argmin = self.breakpoints[self.values.index(min_val)]
         return min_val, argmin
 
-    def maximum(self):
+    def maximum(self) -> Tuple[float, float]:
         """
         Analogs to minimum implementation
         Returns: (max value, arg max)
