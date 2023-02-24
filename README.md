@@ -19,3 +19,21 @@
 2. Use your own judgement / design, on how to handle failure modes. There is not one correct answer for that design aspect.
 3. If possible try to follow as much as possible, what you consider best practices, for providing a working python library.
 
+## Contributing
+1. Create a virtual environment and activate it
+```shell
+python3 -m venv .venv
+source .venv/bin/acticate
+```
+
+2.Install the dependencies
+```shell
+pip install -r requirements.txt
+```
+
+3. Your local dev environment is setup!
+
+## Running the tests
+
+With your virtual environment setup, from the project root directory run `pytest`
+
