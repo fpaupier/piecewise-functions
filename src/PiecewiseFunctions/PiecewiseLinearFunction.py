@@ -50,20 +50,81 @@ class PiecewiseLinearFunction:
     @staticmethod
     def sanity_check(breakpoints: Any, slopes: Any, intercepts: Any) -> None:
         """
-
+        Raises: ValueError if breakpoints, slopes or intercepts are not of the expected type for PiecewiseLinearFunction
         Args:
-            breakpoints:
-            slopes:
-            intercepts:
+            breakpoints: (expected list to boundaries to test)
+            slopes: (expected list of coefficient to test)
+            intercepts: (expected list of constants to test)
 
-        Raises: ValueError if one of the input is invalid
+        Returns: None
 
         """
+        # Ensure types are valid
+        if type(breakpoints) != list:
+            raise ValueError("PiecewiseLinearFunction expects list for breakpoints")
+        if type(intercepts) != list:
+            raise ValueError("PiecewiseLinearFunction expects list for intercepts")
+
+        # Check that slopes are numbers
+        for val in slopes:
+            if type(val) not in (float, int):
+                raise ValueError(
+                    "PiecewiseLinearFunction expects slope to be integer or floating point number"
+                )
+        # Check that intercepts are numbers
+        for val in intercepts:
+            if type(val) not in (float, int):
+                raise ValueError(
+                    "PiecewiseLinearFunction expects intercept to be integer or floating point number"
+                )
+        # Check that boundaries are numbers
+        seen = set()
+        for border in breakpoints:
+            if border in seen:
+                raise ValueError(
+                    "PiecewiseLinearFunction expects breakpoints to be unique"
+                )
+            seen.add(border)
+            if type(border) not in (float, int):
+                raise ValueError(
+                    "PiecewiseLinearFunction expects breakpoint to be integer or floating point number"
+                )
+
+        # Ensure breakpoints are sorted
+        sorted_breakpoints: bool = all(
+            breakpoints[i] <= breakpoints[i + 1] for i in range(len(breakpoints) - 1)
+        )
+        if not sorted_breakpoints:
+            raise ValueError(
+                "PiecewiseLinearFunction expects breakpoints to be passed in increasing order"
+            )
+
+        # Ensure breakpoints and values dimensions are coherent
+        n_breakpoints: int = len(breakpoints)
+        n_slopes: int = len(slopes)
+        n_intercepts: int = len(intercepts)
+        if n_breakpoints < 2:
+            raise ValueError(
+                "PiecewiseLinearFunction expects to have at least 2 breakpoints"
+            )
+        if n_slopes < 1:
+            raise ValueError("PiecewiseLinearFunction expects to have at least 1 slope")
+        if n_intercepts < 1:
+            raise ValueError(
+                "PiecewiseLinearFunction expects to have at least 1 intercept"
+            )
+        correct_dimensions: bool = (n_breakpoints == n_slopes + 1) and (
+            n_breakpoints == n_intercepts + 1
+        )
+        if not correct_dimensions:
+            raise ValueError(
+                "PiecewiseLinearFunction expects to have n breakpoints and n-1 slopes and n-1 intercepts"
+            )
         return
 
     def evaluate(self, x: float) -> float:
         """
-        Works similarly to the PiecewiseConstantFunction class, except it evaluates the function
+        Works similarly to the PiecewiseLinearFunction class, except it evaluates the function
          using linear interpolation between the breakpoints.
 
         Args:
