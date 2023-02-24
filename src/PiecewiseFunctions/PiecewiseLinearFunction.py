@@ -126,14 +126,17 @@ class PiecewiseLinearFunction(PiecewiseFunction):
 
     def evaluate(self, x: float) -> float:
         """
-        Works similarly to the PiecewiseLinearFunction class, except it evaluates the function
-         using linear interpolation between the breakpoints.
+        Evaluate the value of the piecewise linear function at a given point x.
+
+        This function uses linear interpolation to determine the value of the function at x. The function is defined by
+        a set of breakpoints, slopes, and intercepts. At each interval between breakpoints, the function is defined by
+        the equation y = ax + b, where a is the slope and b is the intercept.
 
         Args:
-            x (float): value to evaluate the function on
+            x (float): The point at which to evaluate the function.
 
         Returns:
-            float the value of the evaluation
+            The value of the function at x.
 
         Raises: ValueError if x is out of bound
 
