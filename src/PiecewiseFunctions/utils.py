@@ -9,6 +9,7 @@ def draw(
     x_min: float = -10.0,
     x_max: float = 10.0,
     num_points: int = 1000,
+    title: str = "Piecewise funtion",
 ) -> None:
     """
     Generate a plot of the function over the input range.
@@ -33,5 +34,5 @@ def draw(
     plt.plot(x_values, y_values)
     plt.xlabel("x")
     plt.ylabel("f(x)")
-    plt.title("Piecewise Constant Function")
+    plt.title(title)
     plt.show()
