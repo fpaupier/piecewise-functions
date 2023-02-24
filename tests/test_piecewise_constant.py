@@ -1,4 +1,4 @@
-from src.PiecewiseConstantFunction import PiecewiseConstantFunction
+from PiecewiseFunctions.PiecewiseConstantFunction import PiecewiseConstantFunction
 import math
 
 

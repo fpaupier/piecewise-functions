@@ -2,9 +2,15 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build]
+directory = "dist"
+
+[tool.hatch.build.sources]
+"src/PiecewiseFunctions" = "PiecewiseFunctions"
+
 [project]
 name = "piecewise_functions_fp"
-version = "0.0.1"
+version = "0.0.3"
 authors = [
   { name="François Paupier", email="francois.paupier@orange.fr" },
 ]

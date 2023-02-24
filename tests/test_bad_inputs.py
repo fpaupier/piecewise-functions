@@ -1,6 +1,6 @@
 import pytest
 import math
-from src.PiecewiseConstantFunction import PiecewiseConstantFunction
+from PiecewiseFunctions.PiecewiseConstantFunction import PiecewiseConstantFunction
 
 
 class TestBadInputs:
