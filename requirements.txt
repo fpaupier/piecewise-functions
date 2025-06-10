@@ -39,7 +39,7 @@ pyperclip==1.8.2
 pyproject_hooks==1.0.0
 pytest==7.2.1
 readme-renderer==37.3
-requests==2.32.0
+requests==2.32.4
 requests-toolbelt==0.10.1
 rfc3986==1.5.0
 rich==13.3.1
